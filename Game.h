@@ -1,5 +1,10 @@
 #include <windows.h>
 
-void StartGame(){
+void CMainWin::StartGame(){
+	timerflag = true;
 	
 };
+
+void CMainWin::StopGame(){
+	timerflag = false;
+}
