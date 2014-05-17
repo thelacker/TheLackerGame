@@ -2,10 +2,15 @@ class CMainWin : public CFrameWnd
 {
 public:
 	CMainWin();
-	CButton NewGame, Exit, High;
+	CButton		NewGame,
+				Exit,
+				High,
+				GameExit;
+
 	afx_msg void ClickNewGame();
 	afx_msg void ClickExit();
 	afx_msg void ClickHighScores();
+	afx_msg void ClickGameExit();
 	afx_msg void OnTimer(UINT ID);
 	afx_msg void OnPaint();
 	afx_msg void OnDestroy();

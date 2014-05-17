@@ -8,13 +8,15 @@
 
 CMainWin::CMainWin()
 {
-	int X = GetSystemMetrics(SM_CXSCREEN);
-	int Y = GetSystemMetrics(SM_CYSCREEN);
+
+
 	CRect rect(X/3, Y/5, 9*X/16, Y/2);
-	Create(NULL, _T("TheLacker Game"), WS_BORDER, rect);
-	NewGame.Create(_T("New Game"), WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, RECT_NEWGAME, this, IDC_ngb);
-	Exit.Create(_T("Exit"), WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, RECT_EXIT, this, IDC_exb);
-	High.Create(_T("High Scores"), WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, RECT_HSB, this, IDC_hsb);
+
+	Create(NULL,	_T("TheLacker Game"),	WS_BORDER,	rect);
+	NewGame.Create(	_T("New Game"),			WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, RECT_NEWGAME,	this,	IDC_ngb);
+	Exit.Create(	_T("Exit"),				WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, RECT_EXIT,		this,	IDC_exb);
+	High.Create(	_T("High Scores"),		WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, RECT_HSB,		this,	IDC_hsb);
+	GameExit.Create(_T("X"),				WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, RECT_GEB,		this,	IDC_geb);
 }
 
 void CMainWin::OnPaint()
@@ -28,9 +30,10 @@ void CMainWin::OnPaint()
 
 BOOL CMainWin::OnEraseBkgnd(CDC* pDC)
 {
-	CBrush backBrush(BACK_COLOR);
-	CBrush* pOldBrush = pDC->SelectObject(&backBrush);
-	CRect rect;
+	CBrush		backBrush(BACK_COLOR);
+	CBrush*		pOldBrush				=		pDC->SelectObject(&backBrush);
+	CRect		rect;
+
 	pDC->GetClipBox(&rect);
 	pDC->PatBlt(rect.left, rect.top, rect.Width(), rect.Height(), PATCOPY);
 	pDC->SelectObject(pOldBrush);

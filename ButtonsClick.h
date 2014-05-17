@@ -17,3 +17,8 @@ void CMainWin::ClickHighScores(){
 	ASSERT(AfxGetApp()->m_pMainWnd != NULL);
 	AfxGetApp()->m_pMainWnd->SendMessage(WM_CLOSE);
 }
+
+void CMainWin::ClickGameExit(){
+	ASSERT(AfxGetApp()->m_pMainWnd != NULL);
+	AfxGetApp()->m_pMainWnd->SendMessage(WM_CLOSE);
+}
