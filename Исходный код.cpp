@@ -19,6 +19,7 @@ CMainWin::CMainWin()
 	timerflag = false;
 	timer = 0;
 	sound = MB_ICONWARNING;
+	pos = 3;
 }
 
 void CMainWin::OnPaint()
@@ -26,6 +27,7 @@ void CMainWin::OnPaint()
 	NewGame.DestroyWindow();
 	Exit.DestroyWindow();
 	High.DestroyWindow();
+	
 }
 
 
@@ -39,6 +41,31 @@ BOOL CMainWin::OnEraseBkgnd(CDC* pDC)
 	pDC->GetClipBox(&rect);
 	pDC->PatBlt(rect.left, rect.top, rect.Width(), rect.Height(), PATCOPY);
 	pDC->SelectObject(pOldBrush);
+	CFont font;
+
+	CMainWin::SetFont(&font, TRUE);
+	VERIFY(font.CreateFont(
+	400,                       // nHeight
+	0,                         // nWidth
+	0,                         // nEscapement
+	0,                         // nOrientation
+	FW_NORMAL,                 // nWeight
+	FALSE,                     // bItalic
+	FALSE,                     // bUnderline
+	0,                         // cStrikeOut
+	ANSI_CHARSET,              // nCharSet
+	OUT_DEFAULT_PRECIS,        // nOutPrecision
+	CLIP_DEFAULT_PRECIS,       // nClipPrecision
+	DEFAULT_QUALITY,           // nQuality
+	DEFAULT_PITCH | FF_SWISS,  // nPitchAndFamily
+	_T("Arial")));                 // lpszFacename
+
+	// Do something with the font just created...
+	CClientDC dc(this);
+	CFont* def_font = dc.SelectObject(&font);
+	dc.SetBkColor(BACK_COLOR);
+	dc.TextOut(X/pos, Y/3, str);
+	dc.SelectObject(def_font);
 	return TRUE;
 }
 

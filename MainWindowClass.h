@@ -11,6 +11,13 @@ public:
 	bool			timerflag;
 	unsigned int	timer;
 	int				sound;
+	int				pos;
+	char			str[10];
+	int				first;
+	int				second;
+	int				znak;
+	int				otvet;
+
 	afx_msg void ClickNewGame();
 	afx_msg void ClickExit();
 	afx_msg void ClickHighScores();
@@ -20,6 +27,7 @@ public:
 	afx_msg void OnDestroy();
 	afx_msg void StartGame();
 	afx_msg void StopGame();
+	afx_msg void Game();
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	DECLARE_MESSAGE_MAP()
 };
