@@ -61,19 +61,31 @@ void CMainWin::OnTimer(UINT){
 		if (timer == 14){
 			MessageBeep(MB_ICONERROR);
 			StopGame();
-			level++;
-			Initiate();
-			Sleep(300);
-			CClientDC dc(this);
-			CFont* def_font = dc.SelectObject(&font);
-			dc.SetBkColor(BACK_COLOR);
-			dc.SetTextColor(BACK_COLOR);
-			dc.TextOut(X / pos, Y / 3, str);
-			StartGame();
 		}
 	}
 	
 }
+
+void CMainWin::OnChar(UINT Ch, UINT Count, UINT Flags)
+{
+	if (Ch == 13) {
+		otvet2 = 0;
+		o == 0;
+	}
+	if ((Ch-48) == otvet || otvet2 == otvet){
+		StopGame();
+	}
+	else {
+		if (o == 0){
+			otvet2 = 10 * (Ch - 48);
+		}
+		else{
+			otvet2 += (Ch - 48);
+		}
+		o++;
+	}
+}
+
 
 BOOL CApp::InitInstance()
 {

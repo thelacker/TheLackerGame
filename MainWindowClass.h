@@ -21,6 +21,8 @@ public:
 	int				znak2;
 	int				otvet;
 	int				level;
+	int				otvet2 = 0;
+	int				o = 0;
 
 	void			Initiate();
 	void			Destruction();
@@ -34,6 +36,7 @@ public:
 	afx_msg void StartGame();
 	afx_msg void StopGame();
 	afx_msg void Game();
+	afx_msg void OnChar(UINT Ch, UINT Count, UINT Flags);
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	DECLARE_MESSAGE_MAP()
 };

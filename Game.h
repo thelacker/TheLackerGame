@@ -10,9 +10,9 @@ void CMainWin::StartGame(){
 	if (level == 1){
 		str[0] = first + '0';
 		switch (znak){
-		case 1: str[1] = '+'; otvet = first + second; break;
-		case 2:	str[1] = '-'; otvet = first - second; break;
-		case 3: str[1] = '*'; otvet = first * second; break;
+		case 1: str[1] = '+'; otvet = first + second; otvet > 0 ? otvet = otvet : otvet = -otvet; break;
+		case 2:	str[1] = '-'; otvet = first - second; otvet > 0 ? otvet = otvet : otvet = -otvet; break;
+		case 3: str[1] = '*'; otvet = first * second; otvet > 0 ? otvet = otvet : otvet = -otvet; break;
 		}
 		str[2] = second % 10 + '0';
 		str[3] = NULL;
@@ -29,13 +29,14 @@ void CMainWin::StartGame(){
 		}
 		str[2] = second + '0';
 		switch (znak2){
-		case 1: str[3] = '+'; otvet += third; break;
-		case 2:	str[3] = '-'; otvet -= third; break;
+		case 1: str[3] = '+'; otvet += third; otvet > 0 ? otvet = otvet : otvet = -otvet; break;
+		case 2:	str[3] = '-'; otvet -= third; otvet > 0 ? otvet = otvet : otvet = -otvet; break;
 		}
 		str[4] = third + '0';
 		str[5] = NULL;
 	}
 	else {
+		timerflag = false;
 		str[0] = 'E';
 		str[1] = 'N';
 		str[2] = 'D';
@@ -44,8 +45,6 @@ void CMainWin::StartGame(){
 		str[5] = NULL;
 		OnPaint();
 		Sleep(500);
-		ASSERT(AfxGetApp()->m_pMainWnd != NULL);
-		AfxGetApp()->m_pMainWnd->SendMessage(WM_CLOSE);
 	}
 	OnPaint();
 	
@@ -60,7 +59,15 @@ void CMainWin::StopGame(){
 	str[4] = '!';
 	pos = 5;
 	OnPaint();
-
+	level++;
+	Initiate();
+	Sleep(300);
+	CClientDC dc(this);
+	CFont* def_font = dc.SelectObject(&font);
+	dc.SetBkColor(BACK_COLOR);
+	dc.SetTextColor(BACK_COLOR);
+	dc.TextOut(X / pos, Y / 3, str);
+	StartGame();
 }
 
 void CMainWin::Game(){
