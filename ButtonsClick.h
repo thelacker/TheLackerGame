@@ -13,8 +13,16 @@ void CMainWin::ClickExit(){
 }
 
 void CMainWin::ClickHighScores(){
-	ASSERT(AfxGetApp()->m_pMainWnd != NULL);
-	AfxGetApp()->m_pMainWnd->SendMessage(WM_CLOSE);
+	std::ifstream f;
+	f.open("C:\\HighScores.txt");
+	if (f){
+		f >> str;
+		High.DestroyWindow();
+		CClientDC dc(this);
+		dc.SetBkColor(BACK_COLOR);
+		dc.SetTextColor(RGB(0, 0, 0));
+		dc.TextOut(200, 150, str);
+	}
 }
 
 void CMainWin::ClickGameExit(){
@@ -34,6 +42,7 @@ void CMainWin::Initiate(){
 	timer = 0;
 	sound = MB_ICONWARNING;
 	pos = 7;
+	o = 0;
 }
 
 void CMainWin::Destruction(){

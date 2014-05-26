@@ -36,6 +36,8 @@ void CMainWin::StartGame(){
 		str[5] = NULL;
 	}
 	else {
+		f.open("C:\\HighScores.txt", std::ios::ate);
+		f << Scores;
 		timerflag = false;
 		str[0] = 'E';
 		str[1] = 'N';
@@ -45,12 +47,13 @@ void CMainWin::StartGame(){
 		str[5] = NULL;
 		OnPaint();
 		Sleep(500);
+		
 	}
 	OnPaint();
-	
 };
 
 void CMainWin::StopGame(){
+	Scores += timer + otvet;
 	timerflag = false;
 	str[0] = 'D';
 	str[1] = 'O';

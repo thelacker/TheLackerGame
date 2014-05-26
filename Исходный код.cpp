@@ -1,3 +1,6 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
 #include <afxwin.h>
 #include <time.h>
 #include "DefineIDC.h"
@@ -70,7 +73,7 @@ void CMainWin::OnChar(UINT Ch, UINT Count, UINT Flags)
 {
 	if (Ch == 13) {
 		otvet2 = 0;
-		o == 0;
+		o = 0;
 	}
 	if ((Ch-48) == otvet || otvet2 == otvet){
 		StopGame();

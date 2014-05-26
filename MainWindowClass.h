@@ -8,6 +8,7 @@ public:
 					High,
 					GameExit;
 	CFont			font;
+	std::ofstream	f;
 
 	bool			timerflag;
 	unsigned int	timer;
@@ -22,7 +23,8 @@ public:
 	int				otvet;
 	int				level;
 	int				otvet2 = 0;
-	int				o = 0;
+	int				o;
+	int				Scores = 0;
 
 	void			Initiate();
 	void			Destruction();
