@@ -7,6 +7,7 @@ public:
 					Exit,
 					High,
 					GameExit;
+	CFont			font;
 
 	bool			timerflag;
 	unsigned int	timer;
@@ -15,9 +16,14 @@ public:
 	char			str[10];
 	int				first;
 	int				second;
+	int				third;
 	int				znak;
+	int				znak2;
 	int				otvet;
+	int				level;
 
+	void			Initiate();
+	void			Destruction();
 	afx_msg void ClickNewGame();
 	afx_msg void ClickExit();
 	afx_msg void ClickHighScores();
